@@ -1,0 +1,55 @@
+
+
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+    <% if resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(resource.errors.count, "error") %> empêche l'enregistrement du contact:</h2>
+
+          <ul>
+            <% resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+<div class="clear-form two-col">
+  <div class="form-heading">
+    <h3 class="header">Sign In</h3>
+    <hr>
+  </div>
+  <div class="col1">
+    <h4>Use other accounts</h4>
+    <p>
+      You can also sign in using your Facebook Account or Google Account
+    </p>
+    <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-large btn-block btn-fb" %>
+    <%= link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2), :class=> "btn btn-large btn-block btn-google" %>
+  </div>
+  <div class="col2">
+    <div class="form-heading">
+      <h4 class="header">Using your account</h4>
+    </div>
+    <div class="form-body">
+      <div class="pair-group">
+        <%= f.input :email, :required => false, :autofocus => true, input_html: { class: 'input-block-level' },:placeholder => 'Email address', label: false,:wrapper => false, :wrapper => false   %>
+        <%= f.input :password, :required => false, input_html: { class: 'input-block-level' } ,:placeholder => 'Mot de passe', label: false, :wrapper => false    %>
+      </div>
+    </div>
+    <div class="form-footer">
+      <%= f.button :button, "Sign in", class: 'btn btn-large btn-blue btn-block' %>
+      <p class="center">
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        <% end -%>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<% end %>
+
+
+<%= render "devise/shared/links" %>

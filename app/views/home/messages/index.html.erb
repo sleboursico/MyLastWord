@@ -1,0 +1,27 @@
+<h1>Listing home_messages</h1>
+
+<table>
+  <tr>
+    <th>Titre</th>
+    <th>Contenu</th>
+    <th>Associé à </th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.titre %></td>
+    <td><%= message.contenu %></td>
+    <td><%= message.contacts.size %></td>
+    <td><%= link_to 'Show', home_message_path(message) %></td>
+    <td><%= link_to 'Edit', edit_home_message_path(message) %></td>
+    <td><%= link_to 'Destroy', home_message_path(message), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Message', new_home_message_path %>

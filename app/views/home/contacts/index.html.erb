@@ -1,0 +1,28 @@
+<h1>Liste de vos contacts</h1>
+
+<%= @contacts.size %> utilisateurs
+
+<div>
+<%= link_to "Ajouter un contact", new_home_contact_path, :class => "signup_button round" %>
+</div>
+
+<table>
+  <tr>
+    <th>Prenom</th>
+    <th>Nom</th>
+    <th>E-mail</th>
+    <th>Téléphone</th>
+    <th></th>
+  </tr>
+
+  <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.prenom %></td>
+        <td><%= contact.nom %></td>
+        <td><%= contact.mail %></td>
+
+      </tr>
+  <% end %>
+</table>
+
+<br />
