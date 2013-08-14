@@ -1,55 +1,58 @@
-
-
+<%= stylesheet_link_tag "sign-in", :media => "all" %>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div id="sign_in1">
 
-    <% if resource.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(resource.errors.count, "error") %> empêche l'enregistrement du contact:</h2>
+      <%= f.error_notification %>
+      <div class="container">
+        <div class="row">
+          <div class="span12 header">
+            <h4><%= t('site.public.signin.titre') %></h4>
+            <p>
+              <%= t('site.public.signin.intro') %></p>
 
-          <ul>
-            <% resource.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
+            <div class="span4 social">
+              <%= link_to image_tag("/assets/face.png"), user_omniauth_authorize_path(:facebook), :class => "circle facebook" %>
+              <%= link_to image_tag("/assets/gplus.png"), user_omniauth_authorize_path(:google_oauth2), :class=> "circle gplus"  %>
+
+            </div>
+          </div>
+
+          <div class="span3 division">
+            <div class="line l"></div>
+            <span>or</span>
+            <div class="line r"></div>
+          </div>
+
+          <div class="span12 footer">
+            <form>
+              <%= f.input :email, :required => false, :autofocus => true, :placeholder => t('site.public.signin.email'), label: false,:wrapper => false, :wrapper => false   %>
+              <%= f.input :password, :required => false,:placeholder => t('site.public.signin.password'), label: false, :wrapper => false    %>
+
+              <%= f.submit t('site.public.signin.submit'), :placeholder => t('site.public.signin.submit') %>
+            </form>
+          </div>
+
+          <div class="span12 proof">
+            <div class="span5 remember">
+              <label class="checkbox">
+                <input type="checkbox"> <%= t('site.public.signin.remember') %>
+              </label>
+
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                  <%= link_to t('site.public.signin.forget'), new_password_path(resource_name) %><br />
+              <% end -%>
+            </div>
+
+            <div class="span3 dosnt">
+              <span><%= t('site.public.signin.noaccount') %></span>
+              <%= link_to t('site.public.signin.signup'), new_registration_path(resource_name), :method => :post %><br />
+
+            </div>
+          </div>
         </div>
-    <% end %>
-<div class="clear-form two-col">
-  <div class="form-heading">
-    <h3 class="header">Sign In</h3>
-    <hr>
-  </div>
-  <div class="col1">
-    <h4>Use other accounts</h4>
-    <p>
-      You can also sign in using your Facebook Account or Google Account
-    </p>
-    <%= link_to "Login with Facebook", user_omniauth_authorize_path(:facebook), :class => "btn btn-large btn-block btn-fb" %>
-    <%= link_to "Login with Google", user_omniauth_authorize_path(:google_oauth2), :class=> "btn btn-large btn-block btn-google" %>
-  </div>
-  <div class="col2">
-    <div class="form-heading">
-      <h4 class="header">Using your account</h4>
-    </div>
-    <div class="form-body">
-      <div class="pair-group">
-        <%= f.input :email, :required => false, :autofocus => true, input_html: { class: 'input-block-level' },:placeholder => 'Email address', label: false,:wrapper => false, :wrapper => false   %>
-        <%= f.input :password, :required => false, input_html: { class: 'input-block-level' } ,:placeholder => 'Mot de passe', label: false, :wrapper => false    %>
       </div>
     </div>
-    <div class="form-footer">
-      <%= f.button :button, "Sign in", class: 'btn btn-large btn-blue btn-block' %>
-      <p class="center">
-        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-        <% end -%>
-      </p>
-    </div>
-  </div>
-</div>
 
 
 <% end %>
-
-
-<%= render "devise/shared/links" %>

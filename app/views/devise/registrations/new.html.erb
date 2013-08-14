@@ -1,17 +1,66 @@
-<h2>Sign up</h2>
-
+<%= stylesheet_link_tag "sign-up", :media => "all" %>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <div id="sign_up2">
+      <%= f.error_notification %>
+      <div class="container">
+        <div class="section_header">
+          <h3><%= t('site.public.signup.title') %></h3>
+        </div>
+        <div class="row login">
+          <div class="span5 left_box">
+            <h4><%= t('site.public.signup.intro') %></h4>
 
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
+            <div class="perk_box">
+              <div class="perk">
+                <span class="icos ico1"></span>
+                <p><strong>Lorem alteration</strong> in some form  injected humour these randomised words .</p>
+              </div>
+              <div class="perk">
+                <span class="icos ico2"></span>
+                <p><strong>There are many variations</strong> of passages of Lorem alteration in some form  injected humour these randomised words.</p>
+              </div>
+              <div class="perk">
+                <span class="icos ico3"></span>
+                <p><strong>Alteration in some form</strong> injected humour these randomised words.</p>
+              </div>
+            </div>
+          </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+          <div class="span6 signin_box">
+            <div class="box">
+              <div class="box_cont">
+                <div class="social">
+                  <%= link_to image_tag("/assets/face.png"), user_omniauth_authorize_path(:facebook), :class => "circle facebook" %>
+                  <%= link_to image_tag("/assets/gplus.png"), user_omniauth_authorize_path(:google_oauth2), :class=> "circle gplus"  %>
+                </div>
+
+                <div class="division">
+                  <div class="line l"></div>
+                  <span>or</span>
+                  <div class="line r"></div>
+                </div>
+
+                <div class="form">
+                  <form>
+                    <%= f.input :email, :required => true, :autofocus => true, :placeholder => t('site.public.signup.email'), label: false,:wrapper => false %>
+                    <%= f.input :password, :required => true, :placeholder => t('site.public.signup.password'), label: false, :wrapper => false   %>
+                    <%= f.input :password_confirmation, :required => true, :placeholder => t('site.public.signup.password'), label: false, :wrapper => false  %>
+
+                    <div class="forgot">
+                      <span><%= t('site.public.signup.already') %> Already have an account?</span>
+                      <a href="sign-in.html"><%= t('site.public.signup.signin')%></a>
+                    </div>
+                    <%= f.button :submit, t('site.public.signup.submit') %>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -220,3 +220,34 @@ fr:
   activerecord:
     errors:
       <<: *errors
+
+  site:
+    title: "TITRE"
+    public:
+      menu:
+        home: "ACCUEIL"
+        aboutus: "A PROPOS"
+        contact: "CONTACTEZ-NOUS"
+        signin: "SE CONNECTER"
+      signin:
+        titre: "Connectez-vous à votre compte"
+        intro: "Choisissez votre moyen d'authentification."
+        submit: "Se connecter"
+        email: "E-mail"
+        password: "Mot de passe"
+        signup: "S'inscrire"
+        noaccount: "Vous n'avez pas de compte ?"
+        forget: "Vous avez oublier votre mot de passe ?"
+        remember: "Se souvenir de moi"
+      forget:
+        submit:
+        title: "Vous avez oublié votre mot de passe ?"
+        intro: "Vous allez recevoir un e-mail avec les instructions"
+      signup:
+        title: "Inscription"
+        intro: "Créez votre compte ! "
+        already: "Vous avez déjà un compte"
+        password: "Mot de passe"
+        email: "E-mail"
+        submit: "S'inscrire"
+        signin: "Se connecter"
