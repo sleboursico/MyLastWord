@@ -18,6 +18,12 @@ $(function () {
     staticHeader.initialize();
 
     portfolioItem.initialize();
+
+
+
+    $("tr[url]").click(function() {
+        window.location = $(this).attr("url");
+    })
 });
 
 var portfolioItem = {

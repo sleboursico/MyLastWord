@@ -6,20 +6,22 @@
 <%= link_to "Ajouter un contact", new_home_contact_path, :class => "signup_button round" %>
 </div>
 
-<table>
-  <tr>
-    <th>Prenom</th>
-    <th>Nom</th>
-    <th>E-mail</th>
-    <th>Téléphone</th>
-    <th></th>
-  </tr>
+<table class="table table-hover">
+  <thead>
+      <tr>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>E-mail</th>
+        <th></th>
+      </tr>
+  </thead>
 
   <% @contacts.each do |contact| %>
-      <tr>
+      <tr url="<%= edit_home_contact_path(contact) %>">
         <td><%= contact.prenom %></td>
         <td><%= contact.nom %></td>
         <td><%= contact.mail %></td>
+        <td><%= button_to '', home_contact_path(contact), :method => :delete, :class => 'icone delete', :title => 'Test',data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
   <% end %>

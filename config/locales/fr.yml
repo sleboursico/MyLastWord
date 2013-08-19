@@ -223,6 +223,11 @@ fr:
 
   site:
     title: "TITRE"
+    home:
+      menu:
+        title: "Gérer mes données"
+        contacts: "Gérer mes contacts"
+        messages: "Gérer mes messages"
     public:
       menu:
         home: "ACCUEIL"
@@ -240,7 +245,7 @@ fr:
         forget: "Vous avez oublier votre mot de passe ?"
         remember: "Se souvenir de moi"
       forget:
-        submit:
+        submit: "Envoyer"
         title: "Vous avez oublié votre mot de passe ?"
         intro: "Vous allez recevoir un e-mail avec les instructions"
       signup:

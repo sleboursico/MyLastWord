@@ -25,6 +25,30 @@ textarea {
 	font-family: 'Lato', Helvetica;
 }
 
+input.delete  {
+    background: url("../assets/icones/delete.png") no-repeat;
+    cursor:pointer;
+    width: 22px;
+    height: 22px;
+    border: none;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;/* Utilisé pour la transition sur chrome et safari */
+    -moz-transition: -moz-transform 0.2s ease-in-out;/* Utilisé pour la transition sur Firefox */
+    transition: transform 0.2s ease-in-out;
+}
+
+input.delete:hover {
+    background: url("../assets/icones/delete.png") no-repeat;
+    cursor:pointer;
+    width: 22px;
+    height: 22px;
+    border: none;
+    -webkit-transform: rotate(-90deg);/* Agrandissement de la photo à l'échelle 1.4 et rotation de -10 degrés */
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+
 /* Navbar
 -------------------------------------------------- */
 body.pull_top {
@@ -457,6 +481,14 @@ header {
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
+}
+
+.logout_button {
+    background:none!important;
+    border:none;
+    padding:0!important;
+    /*border is optional*/
+    border-bottom:1px solid #444;
 }
 
 /* Icons

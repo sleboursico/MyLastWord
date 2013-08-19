@@ -57,8 +57,8 @@ class Home::ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
 
     respond_to do |format|
-      if @contact.update_attributes(params[:tweet])
-        format.html { redirect_to @contact, notice: 'Le contact a ete mis a jour.' }
+      if @contact.update_attributes(params[:contact])
+        format.html { redirect_to home_contacts_path, notice: 'Le contact a ete mis a jour.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,6 +77,14 @@ class Home::ContactsController < ApplicationController
   end
 
 
+  def edit
+    @contact = Contact.find(params[:id])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @contact }
+    end
+  end
 
 
   private

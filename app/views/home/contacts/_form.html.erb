@@ -1,4 +1,4 @@
-<%= form_for @contact, url: {action: "create"} do |f| %>
+<%= simple_form_for [:home, @contact] do |f| %>
     <% if @contact.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@contact.errors.count, "error") %> empêche l'enregistrement du contact:</h2>
