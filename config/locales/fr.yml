@@ -228,6 +228,23 @@ fr:
         title: "Gérer mes données"
         contacts: "Gérer mes contacts"
         messages: "Gérer mes messages"
+      contact:
+        title: "Mon carnet de contact"
+        ajouter: "Ajouter un contact"
+        supprimer: "Supprimer un contact"
+        modifier: "Modifier un contact"
+        intro: "Votre carnet contient %{nb}."
+      message:
+        title: "Mes messages"
+        titre: "Titre"
+        contenu: "Contenu"
+        asso: "Contacts associés"
+        intro: "Vous avez %{nb}."
+        ajouter: "Ajouter un message"
+        supprimer: "Supprimer"
+        creer: "Nouveau message"
+        modifier: "Modifier un message"
+        intro2: "Cette page vous permet de gérer vos messages et d'affecter vos contacts."
     public:
       menu:
         home: "ACCUEIL"

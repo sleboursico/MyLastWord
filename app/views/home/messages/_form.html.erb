@@ -1,5 +1,4 @@
 
-
 <%= simple_form_for [:home, @message] do |f| %>
 
     <% if @message.errors.any? %>
@@ -18,5 +17,8 @@
     <%= f.input :titre %>
     <%= f.input :contenu %>
     <%= f.association :contacts,collection: current_user.contacts, label_method: :getNomCompletEtAdresse,value_method: :id, as: :check_boxes %>
+
+    <div class="actions">
     <%= f.button :submit %>
+    </div>
 <% end %>

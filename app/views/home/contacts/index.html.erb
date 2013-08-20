@@ -1,10 +1,6 @@
-<h1>Liste de vos contacts</h1>
-
-<%= @contacts.size %> utilisateurs
-
-<div>
-<%= link_to "Ajouter un contact", new_home_contact_path, :class => "signup_button round" %>
-</div>
+<p class="intro">
+  <%= t 'site.home.contact.intro', :nb => pluralize(@contacts.size, 'contact') %>
+</p>
 
 <table class="table table-hover">
   <thead>
@@ -17,14 +13,19 @@
   </thead>
 
   <% @contacts.each do |contact| %>
-      <tr url="<%= edit_home_contact_path(contact) %>">
+      <tr url="<%= edit_home_contact_path(contact) %>" onmouseover="$('.delete<%= contact.id %>').css('visibility','visible');" onmouseout="$('.delete<%= contact.id %>').css('visibility','hidden');" style = "cursor: pointer">
         <td><%= contact.prenom %></td>
         <td><%= contact.nom %></td>
         <td><%= contact.mail %></td>
-        <td><%= button_to '', home_contact_path(contact), :method => :delete, :class => 'icone delete', :title => 'Test',data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to '', home_contact_path(contact), :method => :delete, :class => "icone delete delete#{contact.id}", :title => 'Test',data: { confirm: 'Are you sure?' },:style=> "visibility : hidden" %></td>
 
       </tr>
   <% end %>
 </table>
 
-<br />
+
+
+<div class="actions">
+  <%= link_to "Ajouter un contact", new_home_contact_path, :class => "blue_button" %>
+</div>
+

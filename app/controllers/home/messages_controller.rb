@@ -3,6 +3,7 @@ class Home::MessagesController  < ApplicationController
 
   layout 'home'
   def index
+    @title = t('site.home.message.title')
     @messages = current_user.messages
 
     respond_to do |format|
@@ -15,6 +16,7 @@ class Home::MessagesController  < ApplicationController
   # GET /tweets/new
   # GET /tweets/new.json
   def new
+    @title = t('site.home.message.creer')
     @message = Message.new
 
     respond_to do |format|
@@ -25,6 +27,7 @@ class Home::MessagesController  < ApplicationController
 
 
   def edit
+    @title = t('site.home.message.modifier')
     @message = Message.find(params[:id])
 
     respond_to do |format|

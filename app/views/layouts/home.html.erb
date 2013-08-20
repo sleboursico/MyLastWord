@@ -62,6 +62,10 @@
         </div><!--/.well -->
       </div><!--/span-->
       <div class="span8">
+
+        <div class="section_header">
+          <h3><%= @title %> </h3>
+        </div>
         <%= bootstrap_flash %>
         <% flash.each do |key, value| %>
             <div class="flash <%= key %>"><%= value %></div>

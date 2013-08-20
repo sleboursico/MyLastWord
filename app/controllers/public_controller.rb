@@ -1,4 +1,4 @@
-class PublicController < ApplicationController
+class PublicController < ActionController::Base
   before_filter :show_maintenance, :if => :website_is_in_maintenance?
   layout 'application'
 

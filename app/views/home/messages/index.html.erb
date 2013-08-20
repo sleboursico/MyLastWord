@@ -1,27 +1,38 @@
-<h1>Listing home_messages</h1>
+<p class="intro">
+  <%= t 'site.home.message.intro2' %>
+</p>
 
-<table>
+<table class="table table-hover">
+  <thead>
   <tr>
-    <th>Titre</th>
-    <th>Contenu</th>
-    <th>Associé à </th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t 'site.home.message.titre' %></th>
+    <th><%= t 'site.home.message.contenu' %></th>
+    <th><%= t 'site.home.message.asso' %></th>
   </tr>
+  </thead>
 
-<% @messages.each do |message| %>
-  <tr>
-    <td><%= message.titre %></td>
-    <td><%= message.contenu %></td>
-    <td><%= message.contacts.size %></td>
-    <td><%= link_to 'Show', home_message_path(message) %></td>
-    <td><%= link_to 'Edit', edit_home_message_path(message) %></td>
-    <td><%= link_to 'Destroy', home_message_path(message), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @messages.each do |message| %>
+      <tr url="<%= edit_home_message_path(message) %>" onmouseover="$('.delete<%= message.id %>').css('visibility','visible');" onmouseout="$('.delete<%= message.id %>').css('visibility','hidden');" style = "cursor: pointer">
+        <td><%= message.titre %></td>
+        <td><%= message.contenu %></td>
+        <td>
+          <ul>
+              <% message.contacts.each do |contact| %>
+                <li><%= contact.getNomCompletEtAdresse %></li>
+
+                <% end %>
+          </ul>
+        </td>
+        <td><%= button_to '', home_message_path(message), :method => :delete, :class => "icone delete delete#{message.id}", :title => t('site.home.message.supprimer'), :style=> "visibility : hidden" %></td>
+
+      </tr>
+
+  <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Message', new_home_message_path %>
+
+<div class="actions">
+  <%= link_to t('site.home.message.ajouter'), new_home_message_path, :class => "blue_button" %>
+</div>
+

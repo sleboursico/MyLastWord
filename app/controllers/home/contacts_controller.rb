@@ -4,6 +4,7 @@ class Home::ContactsController < ApplicationController
   layout 'home'
 
   def index
+    @title = t('site.home.contact.title')
     @contacts = current_user.contacts
 
     respond_to do |format|
@@ -15,6 +16,7 @@ class Home::ContactsController < ApplicationController
   # GET /tweets/new
   # GET /tweets/new.json
   def new
+    @title = t('site.home.contact.ajouter')
     @contact = Contact.new
 
     respond_to do |format|
@@ -78,6 +80,7 @@ class Home::ContactsController < ApplicationController
 
 
   def edit
+    @title = t('site.home.contact.modifier')
     @contact = Contact.find(params[:id])
 
     respond_to do |format|
