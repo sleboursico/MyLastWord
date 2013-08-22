@@ -218,6 +218,11 @@ fr:
     errors:
       <<: *errors
   activerecord:
+    enums:
+      user:
+        frequences:
+          mois: "Chaque mois"
+          semaine: "Chaque semaine"
     errors:
       <<: *errors
 
@@ -228,6 +233,12 @@ fr:
         title: "Gérer mes données"
         contacts: "Gérer mes contacts"
         messages: "Gérer mes messages"
+        parametres: "Gérer mes paramètres"
+      parametres:
+        titre: "Modifier mes paramètres"
+        frequence: "Fréquence de contrôle"
+        dateDerniereValidation: "Dernier contrôle"
+        prochain: "Vous recevrez votre prochain email de contrôle le %{date}."
       contact:
         title: "Mon carnet de contact"
         ajouter: "Ajouter un contact"

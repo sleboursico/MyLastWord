@@ -1,4 +1,4 @@
-class Home::ContactsController < ApplicationController
+class Home::ContactsController < Home::AccountController
   # GET /tweets
   # GET /tweets.json
   layout 'home'

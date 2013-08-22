@@ -1,4 +1,4 @@
-class Home::MessagesController  < ApplicationController
+class Home::MessagesController  < Home::AccountController
 
 
   layout 'home'

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   rolify
+
+
+  before_create :default_values
   devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
 
@@ -9,8 +12,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  as_enum :frequence, :semaine => 0, :mois=> 1
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :nom, :prenom, :dateNaissance
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :nom, :prenom, :dateNaissance, :frequence, :dateDerniereValidation
 
 
   has_many :contacts
@@ -43,6 +48,11 @@ class User < ActiveRecord::Base
       )
     end
     user
+  end
+
+  def default_values
+    self.frequence = User.frequences.mois
+    self.dateDerniereValidation=Date.current
   end
 
 end

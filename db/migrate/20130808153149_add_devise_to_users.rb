@@ -44,8 +44,6 @@ class AddDeviseToUsers < ActiveRecord::Migration
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
 
-    User.create!(:email => 'petzy56@gmail.com', :password => 'password', :password_confirmation => 'password')
-    User.create!(:email => 'user1@gmail.com', :password => 'password', :password_confirmation => 'password')
   end
 
   def self.down

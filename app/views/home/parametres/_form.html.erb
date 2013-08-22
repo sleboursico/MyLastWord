@@ -1,0 +1,23 @@
+<%= simple_form_for [:home, @user],  :url => home_parameters_path, controller: 'ParametresController', method: 'put', action_name: 'update', :remote => true do |f| %>
+
+
+  <div class="field">
+    <%= f.label :frequence %>
+    <%= f.select :frequence, User.frequences_for_select, {}, :onchange => "submit()"%>
+  </div>
+
+
+    <div class="field">
+      <%= f.input :dateDerniereValidation, :as => 'date_picker', :input_html => {:disabled => true} %>
+    </div>
+
+    <br />
+
+
+    <p class="intro">
+      <%= t 'site.home.parametres.prochain', :date => @date %>
+    </p>
+
+
+
+<% end %>

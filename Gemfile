@@ -27,6 +27,7 @@ gem 'activeadmin'
 # javascript
 gem 'jquery-ui-rails'
 
+gem 'simple_enum'
 
 #form
 gem 'simple_form'
