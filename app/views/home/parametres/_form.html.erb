@@ -1,15 +1,25 @@
-<%= simple_form_for [:home, @user],  :url => home_parameters_path, controller: 'ParametresController', method: 'put', action_name: 'update', :remote => true do |f| %>
+<div id="formParametre">
+<%= simple_form_for [:home, @user],  :url => home_parameters_path, controller: 'ParametresController', method: 'post', action_name: 'update', :remote => true do |f| %>
 
 
   <div class="field">
     <%= f.label :frequence %>
-    <%= f.select :frequence, User.frequences_for_select, {}, :onchange => "submit()"%>
-  </div>
+    <%= f.select :frequence, User.frequences_for_select, {},
+                 :onchange => "updateDate()",
+                 data: {
+                         remote: true,
+                         url: home_parameters_path,
+                         update: 'dateDerniereValidation'
+                 }%>
 
+    <span id="valider" style="margin-left: 10px; display:none"><%= image_tag("/assets/icones/valider.png") %></span>
+  </div>
 
     <div class="field">
       <%= f.input :dateDerniereValidation, :as => 'date_picker', :input_html => {:disabled => true} %>
     </div>
+
+
 
     <br />
 
@@ -21,3 +31,23 @@
 
 
 <% end %>
+
+</div>
+<script type="text/javascript">
+    function updateDate() {
+        $.ajax({
+            type: "post",
+            url: "/home/parameters/",
+            data: $("form").serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                $("#formParametre").html(data);
+                $('.intro').hide();
+                $(".intro").fadeIn();
+                $("#valider").fadeIn(800)
+            }
+        });
+
+    }
+
+</script>

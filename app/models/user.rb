@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   has_many :messages
 
 
+  has_many :validations
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
@@ -55,4 +57,22 @@ class User < ActiveRecord::Base
     self.dateDerniereValidation=Date.current
   end
 
+  def self.rappel
+    for user in User.all()
+      logger.debug "Traitement de user : #{user.id}"
+
+      validation = Validation.create(:user => user );
+
+      UserMailer.rappel(validation).deliver
+      logger.debug "fin u traitement pour le user : #{user.id}"
+    end
+  end
+
+  def date_prochain_rappel
+    case self.frequence_cd
+      when 0 ; return self.dateDerniereValidation + 7.days
+      when 1 ; return self.dateDerniereValidation + 1.month
+    end
+
+  end
 end

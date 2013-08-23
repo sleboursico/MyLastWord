@@ -6,12 +6,14 @@ MyLastWord::Application.routes.draw do
 
   root :to => "public#index"
 
+  get '/verification/:token', to: 'validation#verify', as: 'verify'
+
   namespace :home do
     root :to => 'account#index'
     resources :contacts
     resources :messages
     get '/parameters', to: 'parametres#edit', as: 'parameters'
-    put '/parameters', to: 'parametres#update', as: 'parameters'
+    post '/parameters', to: 'parametres#update', as: 'parameters'
     get '/profile', to: 'users#edit', as: 'edit_user'
     put '/profile', to: 'users#update'
   end
